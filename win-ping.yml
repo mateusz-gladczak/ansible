@@ -1,5 +1,5 @@
 - hosts: all
+  gather_facts: no
   tasks:
   - name: PING host
     win_ping:
-      data: crash
