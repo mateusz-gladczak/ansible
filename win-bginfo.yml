@@ -11,7 +11,7 @@
       dest: C:\Windows\ansible.bgi
   - name: Download BGInfo autostart script
     win_get_url:
-      url: https://github.com/mateusz-gladczak/ansible/blob/master/files/create_bginfo_shortcut.ps1
+      url: https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/files/create_bginfo_shortcut.ps1
       dest: C:\Windows\create_bginfo_shortcut.ps1
   - name: Create autostart entry
     win_command: powershell.exe -ExecutionPolicy ByPass -file C:\Windows\create_bginfo_shortcut.ps1
