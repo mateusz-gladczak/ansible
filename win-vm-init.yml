@@ -46,5 +46,9 @@
       - Private
       - Public
       state: disabled
+  - name: Apply windows updates
+    win_updates:
+      state: searched
+      log_path: C:\ansible_wu.txt
   - name: Reboot
     win_reboot:
