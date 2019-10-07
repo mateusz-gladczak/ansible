@@ -3,11 +3,11 @@
   tasks:
   - name: Download BGInfo
     win_get_url:
-      url: https://github.com/mateusz-gladczak/ansible/blob/master/files/Bginfo.exe
+      url: https://raw.githubusercontent.com/mateusz-gladczak/ansible/blob/master/files/Bginfo.exe
       dest: C:\Windows\bginfo.exe
   - name: Download BGInfo config
     win_get_url:
-      url: https://github.com/mateusz-gladczak/ansible/blob/master/files/ansible.bgi
+      url: https://raw.githubusercontent.com/mateusz-gladczak/ansible/blob/master/files/ansible.bgi
       dest: C:\Windows\ansible.bgi
   - name: Download BGInfo autostart script
     win_get_url:
