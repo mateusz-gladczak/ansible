@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+  - name: PING host
+    win_ping:
+      data: crash
