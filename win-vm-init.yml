@@ -1,5 +1,4 @@
-- hosts: win_servers
-  gather_facts: no
+- hosts: all
   tasks:
   - name: Vmware Tools Installation
     win_chocolatey:
