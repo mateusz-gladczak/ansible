@@ -1,0 +1,13 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: Copy BGInfo and config files
+    win_copy:
+      src: /ansible/files/bginfo.exe
+      dest: C:\Windows\bginfo.exe
+    win_copy:
+      src: /ansible/files/ansible.bgi
+      dest: C:\Windows\ansible.bgi
+    win_copy:
+      src: /asible/files/run_bginfo.lnk
+      dest: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\run_bginfo.lnk
