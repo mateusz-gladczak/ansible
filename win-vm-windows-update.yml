@@ -6,5 +6,5 @@
       - SecurityUpdates
       - CriticalUpdates
       - UpdateRollups
-    log_path: C:\ansible_awu.txt
-    reboot: yes
+      log_path: C:\ansible_awu.txt
+      reboot: yes
