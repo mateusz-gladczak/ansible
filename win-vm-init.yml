@@ -63,5 +63,19 @@
       name: UserAuthentication
       data: 0
       type: dword
+  - name: Download BGInfo
+    win_get_url:
+      url: https://github.com/mateusz-gladczak/ansible/raw/master/files/Bginfo.exe
+      dest: C:\Windows\bginfo.exe
+  - name: Download BGInfo config
+    win_get_url:
+      url: https://github.com/mateusz-gladczak/ansible/raw/master/files/ansible.bgi
+      dest: C:\Windows\ansible.bgi
+  - name: Download BGInfo autostart script
+    win_get_url:
+      url: https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/files/create_bginfo_shortcut.ps1
+      dest: C:\Windows\create_bginfo_shortcut.ps1
+  - name: Create autostart entry
+    win_command: powershell.exe -ExecutionPolicy ByPass -file C:\Windows\create_bginfo_shortcut.ps1
   - name: Reboot
     win_reboot:
