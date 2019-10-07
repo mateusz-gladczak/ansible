@@ -47,4 +47,4 @@
       - Public
       state: disabled
   - name: Reboot
-    win_reboot
+    win_reboot:
