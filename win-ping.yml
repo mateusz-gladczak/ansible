@@ -1,5 +1,5 @@
 - hosts: "{{pinghosts | default('all')}}"
-  gather_facts: yes
+  gather_facts: no
   vars:
     win_host_names: []
     
