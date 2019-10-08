@@ -5,6 +5,8 @@
   - name: PING host
     win_ping:
     register: result
+  
+  - debug var=result.stdout_lines
     
   - name: "Artifact URL of test results to Tower Workflows"
     set_stats:
