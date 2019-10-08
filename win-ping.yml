@@ -5,13 +5,9 @@
   tasks:
   - name: PING host
     win_ping:
+    register: result
     
-  - name: prepare list  
-    set_fact:  
-     win_host_names: "{{ win_host_names }} + [ '{{ ansible_facts.hostname }}' ]"  
-
-  - name: set stats 
-    set_stats:  
-        data:  
-          current_hostname_list: "{{ win_host_names }}"  
-        per_host: no  
+  - name: "Artifact URL of test results to Tower Workflows"
+    set_stats:
+      data:
+        integration_results_url:  "{{ result }}"
