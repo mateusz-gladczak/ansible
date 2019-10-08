@@ -12,7 +12,7 @@
   - name: PING host
     win_ping:
     register: res
-    when: "{{ inventory_hostname }} not in [ '{{ pinghosts }}' ]"
+    when: "{{ inventory_hostname }} not in [ {{ pinghosts }} ]"
 
   - name: prepare list failed
     set_fact:  
