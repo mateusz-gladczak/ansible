@@ -10,4 +10,5 @@
   - name: "Artifact URL of test results to Tower Workflows"
     set_stats:
       data:
-        integration_results_url:  "{{ result }}"
+        integration_results_url:  123
+      per_host: yes
