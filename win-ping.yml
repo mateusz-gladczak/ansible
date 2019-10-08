@@ -3,3 +3,8 @@
   tasks:
   - name: PING host
     win_ping:
+  - name: set stats 
+    set_stats:  
+        data:  
+          pinghosts: "10.0.10.40"  
+        per_host: no 
