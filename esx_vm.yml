@@ -2,4 +2,4 @@
   gather_facts: no
   tasks:
   - name: Run with param
-    win_command: powershell.exe -ExecutionPolicy ByPass -Command {{foocmd}}
+    raw: esxcli vm process list > /tmp/vms.txt
