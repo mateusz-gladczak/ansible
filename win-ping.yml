@@ -7,4 +7,4 @@
     set_stats:  
         data:  
           pinghosts: "10.0.10.40"  
-        per_host: no
+        per_host: yes
