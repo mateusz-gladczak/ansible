@@ -11,3 +11,5 @@
     set_stats:
       data:
         integration_results_url:  "{{ result }}"
+      per_host: yes
+      aggregate: no
