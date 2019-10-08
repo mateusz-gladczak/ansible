@@ -3,5 +3,5 @@
   tasks:
   - name: Download Anything
     win_copy:
-      src: /mnt/ansible_web_files/bginfo.exe
+      src: /mnt/ansible_task_files/bginfo.exe
       dest: C:\Windows\bginfo_daniel.exe
