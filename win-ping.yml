@@ -1,4 +1,4 @@
-- hosts: '{{ pinghosts | default('all') }}'
+- hosts: '{{ pinghosts | default("all") }}'
   gather_facts: no
   vars:
     win_host_names: []
