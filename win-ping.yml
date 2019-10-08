@@ -6,7 +6,7 @@
   tasks:
   - name: Define pinghosts if not defined
     set_fact:
-      pinghosts: []
+      pinghosts: ['fakehostentry']
     when: pinghosts is not defined
   
   - name: PING host
