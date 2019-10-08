@@ -1,10 +1,17 @@
 - hosts: "{{pinghosts | default('all')}}"
   gather_facts: yes
+  vars:  
+    win_host_names: []  
   tasks:
   - name: PING host
     win_ping:
+    
+  - name: prepare list  
+    set_fact:  
+     win_host_names: "{{ win_host_names }} + [ '{{ ansible_facts.hostname }}' ]"  
+
   - name: set stats 
     set_stats:  
         data:  
-          pinghosts: "10.0.10.40"  
-        per_host: yes
+          current_hostname_list: "{{ win_host_names }}"  
+        per_host: no  
