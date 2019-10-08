@@ -1,4 +1,5 @@
-- hosts: all
+- hosts:
+  - 10.0.10.39
   gather_facts: no
   tasks:
   - name: PING host
