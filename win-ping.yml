@@ -14,16 +14,6 @@
     register: res
     ignore_errors: true
     when: "'{{ inventory_hostname }}' not in pinghosts"
-
-  - name: prepare list failed
-    set_fact:  
-      win_host_names: "{{ win_host_names }} + [ 'fail' ]"
-    when: res is failed
-
-  - name: prepare list skipped
-    set_fact:  
-      win_host_names: "{{ win_host_names }} + [ 'skip' ]"
-    when: res is skipped
     
   - name: prepare list succeeded
     set_fact:  
