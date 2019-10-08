@@ -17,7 +17,7 @@
     
   - name: prepare list succeeded
     set_fact:  
-      win_host_names: "{{ win_host_names }} + [ {{inventory_hostname}} ]"
+      win_host_names: {{ win_host_names }} + [ {{inventory_hostname}} ]
     when: res is succeeded
 
   - name: set stats 
