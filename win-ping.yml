@@ -4,6 +4,11 @@
     win_host_names: []
     
   tasks:
+  - name: Define pinghosts if not defined
+    set_fact:
+      pinghosts: []
+    when: pinghosts is not defined
+  
   - name: PING host
     win_ping:
     register: res
