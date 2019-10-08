@@ -10,3 +10,4 @@
     set_stats:
       data:
         integration_results_url: 123
+      aggregate: no
