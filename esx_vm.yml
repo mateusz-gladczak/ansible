@@ -2,4 +2,5 @@
   gather_facts: no
   tasks:
   - name: Run with param
-    raw: vim-cmd vmsvc/power.on $(vim-cmd vmsvc/getallvms | awk '$2 ~ /^{{vmname}}$/ {print $1}')
+    shell: vim-cmd vmsvc/power.on $(vim-cmd vmsvc/getallvms | awk '$2 ~ /^{{item}}$/ {print $1}')
+    with_items: "{{vmnames}}"
