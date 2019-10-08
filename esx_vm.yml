@@ -1,0 +1,5 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: Run with param
+    win_command: powershell.exe -ExecutionPolicy ByPass -Command "Get-Date | add-content C:\WINDOWS\Temp\foo.txt"
