@@ -6,4 +6,4 @@
     win_ping:
     register: result
   
-  - debug: var=result.rc
+  - debug: var=result
