@@ -13,7 +13,7 @@
     win_ping:
     register: res
     ignore_errors: true
-    when: "'{{ inventory_hostname }}' not in {{ pinghostsx }}"
+    when: "'{{ inventory_hostname }}' not in pinghostsx"
 
   - name: prepare list failed
     set_fact:  
