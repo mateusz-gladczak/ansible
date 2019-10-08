@@ -9,7 +9,7 @@
 
   - name: prepare list  
     set_fact:  
-     win_host_names: "{{ win_host_names }} + [ '{{ ansible_facts.ansible_hostname }}' ]"  
+     win_host_names: "{{ win_host_names }} + [ '{{ ansible_facts.hostname }}' ]"  
 
   - name: set stats 
     set_stats:  
