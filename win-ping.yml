@@ -1,4 +1,4 @@
-- hosts: "{{pinghosts}}"
+- hosts: "{{pinghosts | default('all')}}"
   gather_facts: no
   tasks:
   - name: PING host
