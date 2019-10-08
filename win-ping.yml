@@ -1,4 +1,4 @@
-- hosts: {{ pinghostsx | default(all) }}
+- hosts: '{{ pinghostsx | default(all) }}'
   gather_facts: no
   vars:
     win_host_names: []
@@ -12,8 +12,7 @@
   - name: PING host
     win_ping:
     register: res
-    ignore_errors: True
-    
+    ignore_errors: true
     when: "{{ inventory_hostname }} not in [ {{ pinghostsx }} ]"
 
   - name: prepare list failed
