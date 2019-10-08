@@ -4,16 +4,16 @@
     win_host_names: []
     
   tasks:
-#  - name: Define pinghosts if not defined
-#    set_fact:
-#      pinghosts: ['fakehostentry']
-#    when: pinghosts is not defined
+  - name: Define pinghosts if not defined
+    set_fact:
+      pinghosts: ['fakehostentry']
+    when: pinghosts is not defined
   
   - name: PING host
     win_ping:
     register: res
     ignore_errors: true
-    when: "u'{{ inventory_hostname }}' not in {{ pinghostsx }}"
+    when: "'{{ inventory_hostname }}' not in {{ pinghostsx }}"
 
   - name: prepare list failed
     set_fact:  
