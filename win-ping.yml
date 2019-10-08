@@ -10,7 +10,13 @@
 
   - name: prepare list  
     set_fact:  
-     win_host_names: "{{ win_host_names }} + [ '{{ res.ping }}' ]"  
+      win_host_names: "{{ win_host_names }} + [ 'fail' ]"
+    when: res is failed
+    
+  - name: prepare list 2  
+    set_fact:  
+      win_host_names: "{{ win_host_names }} + [ 'OK' ]"
+    when: res is succeeded
 
   - name: set stats 
     set_stats:  
