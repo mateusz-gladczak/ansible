@@ -1,5 +1,5 @@
 - hosts: "{{pinghosts | default('all')}}"
-  gather_facts: yes
+  gather_facts: no
   vars:  
     win_host_names: []  
   tasks:
@@ -12,4 +12,3 @@
       data:
         integration_results_url:  "{{ result }}"
       per_host: yes
-      aggregate: no
