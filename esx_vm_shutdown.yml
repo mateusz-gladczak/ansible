@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: Run with param
+    raw: vim-cmd vmsvc/power.shutdown $(vim-cmd vmsvc/getallvms | awk '$2 ~ /^{{item}}$/ {print $1}')
+    with_items: "{{vmnames}}"
