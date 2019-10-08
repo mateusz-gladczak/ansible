@@ -6,10 +6,11 @@
   tasks:
   - name: PING host
     win_ping:
+    register: res
 
   - name: prepare list  
     set_fact:  
-     win_host_names: "{{ win_host_names }} + [ '{{ ansible_facts.hostname }}' ]"  
+     win_host_names: "{{ win_host_names }} + [ '{{ res.ping }}' ]"  
 
   - name: set stats 
     set_stats:  
