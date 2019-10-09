@@ -1,31 +1,30 @@
-#- hosts: '{{ pinghosts | default("all") }}'
-- hosts: all
+- hosts: '{{ pinghosts | default("all") }}'
   gather_facts: no
   vars:
-    win_host_names: []
+    hosts_all: []
+    hosts_ok: []
     
   tasks:
-  - debug:
-      msg: Processing {{ inventory_hostname }}
-      
-  - name: Define pinghosts if not defined
-    set_fact:
-      pinghosts: ['fakehostentry']
-    when: pinghosts is not defined
-  
+  - name: Build a list of all processed hosts
+    set_fact:  
+      hosts_all: "{{ hosts_all }} + [ '{{inventory_hostname}}' ]"
+#    debug:
+#      msg: Processing {{ inventory_hostname }}
+
   - name: PING host
     win_ping:
     register: res
-    ignore_errors: true
-    when: "'{{ inventory_hostname }}' not in pinghosts"
+#    ignore_errors: true
     
-  - name: prepare list succeeded
+  - name: Build a list of hosts that are OK
     set_fact:  
-      win_host_names: "{{ win_host_names }} + [ '{{inventory_hostname}}' ]"
+      hosts_ok: "{{ hosts_ok }} + [ '{{inventory_hostname}}' ]"
     when: res is succeeded
 
-  - name: set stats 
+  - name: Return hosts that had failed
     set_stats:  
         data:  
-          pinghosts: "{{ win_host_names }}"  
+          pinghosts: "{{ hosts_all | difference(hosts_ok) }}"
         per_host: no
+        
+   - debug: var=pinghosts
