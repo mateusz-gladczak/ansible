@@ -9,14 +9,14 @@
       
   - name: Define pinghosts if not defined
     set_fact:
-      pinghosts: ['fakehostentry']
+      skiphosts: ['fakehostentry']
     when: pinghosts is not defined
   
   - name: PING host
     win_ping:
     register: res
     ignore_errors: true
-    when: "'{{ inventory_hostname }}' not in pinghosts"
+    when: "'{{ inventory_hostname }}' not in skiphosts"
     
   - name: prepare list succeeded
     set_fact:  
@@ -26,5 +26,5 @@
   - name: set stats 
     set_stats:  
         data:  
-          pinghosts: "{{ win_host_names }}"  
+          skiphosts: "{{ win_host_names }}"  
         per_host: no
