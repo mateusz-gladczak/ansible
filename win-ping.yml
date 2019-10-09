@@ -1,9 +1,13 @@
-- hosts: '{{ pinghosts | default("all") }}'
+#- hosts: '{{ pinghosts | default("all") }}'
+- hosts: all
   gather_facts: no
   vars:
     win_host_names: []
     
   tasks:
+  - debug:
+      msg: Processing {{ inventory_hostname }}
+      
   - name: Define pinghosts if not defined
     set_fact:
       pinghosts: ['fakehostentry']
