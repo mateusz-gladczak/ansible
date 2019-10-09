@@ -3,6 +3,7 @@
   vars:
     hosts_all: []
     hosts_ok: []
+    hosts_failed: []
     
   tasks:
   - name: Build a list of all processed hosts
@@ -21,10 +22,14 @@
       hosts_ok: "{{ hosts_ok }} + [ '{{inventory_hostname}}' ]"
     when: res is succeeded
 
+  - name: Build a list of hosts that had FAILED
+    set_fact:
+      hosts_failed: "{{ hosts_all | difference(hosts_ok) }}"
+      
+  - debug: var=hosts_failed
+      
   - name: Return hosts that had failed
     set_stats:  
         data:  
-          pinghosts: "{{ hosts_all | difference(hosts_ok) }}"
+          pinghosts: hosts_failed
         per_host: no
-        
-  - debug: var=pinghosts
