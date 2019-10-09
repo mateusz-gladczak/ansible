@@ -31,5 +31,5 @@
   - name: Return hosts that had failed
     set_stats:  
         data:  
-          pinghosts: "{{ hosts_failed }}"
+          pinghosts: "{{ hosts_all }}"
         per_host: no
