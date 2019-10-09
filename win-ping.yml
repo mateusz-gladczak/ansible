@@ -27,4 +27,4 @@
           pinghosts: "{{ hosts_all | difference(hosts_ok) }}"
         per_host: no
         
-   - debug: var=pinghosts
+  - debug: var=pinghosts
