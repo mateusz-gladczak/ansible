@@ -1,8 +1,8 @@
 - hosts: all
   tasks:
-     - name: check windows service
-       win_service:
-          name: spooler
+    - name: check windows service
+      win_service:
+        name: spooler
       register: result
       failed_when: result is not defined
       #ignore_errors: yes
