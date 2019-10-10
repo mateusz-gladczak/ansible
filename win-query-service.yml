@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+     - name: check windows service
+      win_service:
+          name: spooler
+      register: result
+      failed_when: result is not defined
+      #ignore_errors: yes
+
+    - debug: msg="{{result}}"
+
+    - debug: msg="running"
+      when: result.state is not defined or result.name is not defined
