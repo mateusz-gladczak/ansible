@@ -28,6 +28,3 @@
         data:  
           skiphosts: "{{ win_host_names }}"  
         per_host: no
-
-  - debug:
-    var: ansible_facts
