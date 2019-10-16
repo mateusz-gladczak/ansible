@@ -2,9 +2,9 @@
   gather_facts: no
   tasks:
     - vmware_deploy_ovf:
-        hostname: '{{ vcenter_hostname }}'
-        username: '{{ vcenter_username }}'
-        password: '{{ vcenter_password }}'
+        hostname: '10.0.10.200'
+        username: 'root'
+        password: '{{ esx_password }}'
         ovf: /vmfs/volumes/QNAP_ISCSI/OVA/2019.ova
         datastore: SSD_LOCAL
         Name: NewVM
