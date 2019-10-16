@@ -2,5 +2,5 @@
   gather_facts: no
   tasks:
   - name: Run with param
-    raw: /vmfs/volumes/LOCAL_SSD/vmware-ovftool/ovftool -dm=thin -ds=LOCAL_SSD "/vmfs/volumes/QNAP_ISCSI/OVA/{{ovfname}}" -n {{item}}"vi://{{ovf_username}}:{{ovf_password}}@127.0.0.1"
+    raw: /vmfs/volumes/LOCAL_SSD/vmware-ovftool/ovftool -dm=thin -ds=LOCAL_SSD "/vmfs/volumes/QNAP_ISCSI/OVA/{{ovfname}}" -n {{item}} "vi://{{ovf_username}}:{{ovf_password}}@127.0.0.1"
     with_items: "{{vmnames}}"
