@@ -77,5 +77,11 @@
       dest: C:\Windows\create_bginfo_shortcut.ps1
   - name: Create autostart entry
     win_command: powershell.exe -ExecutionPolicy ByPass -file C:\Windows\create_bginfo_shortcut.ps1
+  - name: Set Chrome as default browser
+    win_regedit:
+      path: HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System
+      name: DisableCAD
+      data: 1
+      type: dword
   - name: Reboot
     win_reboot:

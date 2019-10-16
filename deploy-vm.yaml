@@ -1,0 +1,13 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - vmware_deploy_ovf:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        ovf: /vmfs/volumes/QNAP_ISCSI/OVA/2019.ova
+        datastore: SSD_LOCAL
+        Name: NewVM
+        power_on: yes
+        wait_for_ip_address: true
+      delegate_to: localhost
