@@ -16,13 +16,13 @@
       with_items: "{{vmnames}}"
       async: 600
       poll: 0
-      #register: ova_worker
+      register: ova_worker
 
-    #- name: 'OVA Worker - check on async task'
-    #  async_status:
-    #    jid: "{{ item.ansible_job_id }}"
-    #  register: job_result
-    #  until: job_result.finished
-    #  delay: 5
-    #  retries: 30
-    #  with_items: "{{ova_worker.results}}"
+    - name: 'OVA Worker - check on async task'
+      async_status:
+        jid: "{{ item.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      delay: 5
+      retries: 30
+      with_items: "{{ova_worker.results}}"
