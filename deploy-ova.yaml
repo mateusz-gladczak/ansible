@@ -14,3 +14,13 @@
         validate_certs: false
       delegate_to: localhost
       with_items: "{{vmnames}}"
+      async: 1000
+      poll: 0
+      register: ova_worker
+      
+    - name: 'OVA Worker - check on async task'
+      async_status:
+        jid: "{{ ova_worker.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      retries: 30
