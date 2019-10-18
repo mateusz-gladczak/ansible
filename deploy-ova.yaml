@@ -12,9 +12,9 @@
         power_on: yes
         wait_for_ip_address: true
         validate_certs: false
-      delegate_to: localhost
+      #delegate_to: localhost
       with_items: "{{vmnames}}"
-      async: 1000
+      async: 600
       poll: 0
       register: ova_worker
 
@@ -23,5 +23,6 @@
         jid: "{{ item.ansible_job_id }}"
       register: job_result
       until: job_result.finished
+      delay: 5
       retries: 30
       with_items: "{{ova_worker.results}}"
