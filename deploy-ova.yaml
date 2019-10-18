@@ -26,3 +26,4 @@
       delay: 5
       retries: 30
       with_items: "{{ova_worker.results}}"
+      delegate_to: localhost
