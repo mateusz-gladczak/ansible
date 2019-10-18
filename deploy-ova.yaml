@@ -23,7 +23,7 @@
         jid: "{{ item.ansible_job_id }}"
       register: job_result
       until: job_result.finished
-      delay: 5
-      retries: 30
+      delay: 30
+      retries: 1000
       with_items: "{{ova_worker.results}}"
       delegate_to: localhost
