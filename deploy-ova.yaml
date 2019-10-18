@@ -15,7 +15,7 @@
       #delegate_to: localhost
       with_items: "{{vmnames}}"
       async: 600
-      #poll: 0
+      poll: 0
       #register: ova_worker
 
     #- name: 'OVA Worker - check on async task'
