@@ -4,8 +4,8 @@
     - name: Deploy OVF Template
       vmware_deploy_ovf:
         hostname: '10.0.10.200'
-        username: 'ansible_worker'
-        password: '{{ ansible_worker_password }}'
+        #username: 'ansible_worker'
+        #password: '{{ ansible_worker_password }}'
         ovf: /mnt/ansible_task_files/ova/2019-nosysprep.ova
         datastore: '{{datastore}}'
         name: '{{item}}'
