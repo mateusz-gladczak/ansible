@@ -20,7 +20,8 @@
 
     - name: 'OVA Worker - check on async task'
       async_status:
-        jid: "{{ ova_worker.ansible_job_id }}"
+        jid: "{{ item.ansible_job_id }}"
       register: job_result
       until: job_result.finished
       retries: 30
+      with_items: "{{ova_worker.results}}"
