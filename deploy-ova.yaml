@@ -7,8 +7,8 @@
         username: 'ansible_worker'
         password: '{{ ansible_worker_password }}'
         ovf: /mnt/ansible_task_files/ova/2019-nosysprep.ova
-        datastore: {{datastore}}
-        Name: {{item}}
+        datastore: '{{datastore}}'
+        Name: '{{item}}'
         power_on: yes
         wait_for_ip_address: true
       delegate_to: localhost
