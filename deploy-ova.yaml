@@ -6,7 +6,7 @@
         #hostname: '10.0.10.200'
         #username: 'ansible_worker'
         #password: '{{ ansible_worker_password }}'
-        ovf: /mnt/ansible_task_files/ova/2019-nosysprep.ova
+        ovf: '{{ova_path}}'
         datastore: '{{datastore}}'
         name: '{{item}}'
         power_on: yes
@@ -17,7 +17,7 @@
       async: 1000
       poll: 0
       register: ova_worker
-      
+
     - name: 'OVA Worker - check on async task'
       async_status:
         jid: "{{ ova_worker.ansible_job_id }}"
