@@ -6,6 +6,10 @@
         ovf: '/mnt/ansible_task_files/ova/{{ova_file}}'
         datastore: '{{datastore}}'
         name: '{{vmname}}'
+        inject_ovf_env: yes
+        properties:
+          guestinfo.imie: "mateusz"
+          guestinfo.nazwisko: "gladczak"
         power_on: yes
         wait_for_ip_address: true
         validate_certs: false
