@@ -83,5 +83,9 @@
       name: DisableCAD
       data: 1
       type: dword
+  - name: Set windows region
+    win_region:
+      format: en-US
+      location: 191
   - name: Reboot
     win_reboot:
