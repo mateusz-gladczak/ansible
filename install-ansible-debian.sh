@@ -1,8 +1,8 @@
 #!/bin/bash
 #run this file with the command:
-#https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/install-ansible-debian.sh | /bin/sh -
+#curl https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/install-ansible-debian.sh | /bin/sh -
 
-apt install ansible python3-pip python-dev libkrb5-dev krb5-user
+apt install ansible python3-pip python-dev libkrb5-dev krb5-user -y
 pip3 install pywinrm[kerberos]
 pip3 install pykerberos --upgrade
 pip3 install requests-kerberos --upgrade
