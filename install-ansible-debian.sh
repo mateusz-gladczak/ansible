@@ -1,5 +1,5 @@
 #run this file with the command:
-#https://github.com/mateusz-gladczak/ansible/install-ansible-debian.sh | /bin/sh -
+#https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/install-ansible-debian.sh | /bin/sh -
 
 #!/bin/bash
 apt install ansible python3-pip python-dev libkrb5-dev krb5-user
