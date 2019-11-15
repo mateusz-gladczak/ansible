@@ -18,12 +18,12 @@ configure /etc/krb5.conf for kerberos authentication
 
 [realms]
         NWTRADERS.MSFT = {
-                kdc = DC1.NWTRADERS.MSFT
-                admin_server = DC1.NWTRADERS.MSFT
+                kdc = DC.NWTRADERS.MSFT
+                admin_server = DC.NWTRADERS.MSFT
         }
         TALSPINTOYS.COM = {
-                kdc = DC1.TALSPINTOYS.COM
-                admin_server = DC1.TALSPINTOYS.COM
+                kdc = DC.TALSPINTOYS.COM
+                admin_server = DC.TALSPINTOYS.COM
        }
 
 [domain_realm]
