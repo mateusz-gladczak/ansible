@@ -44,4 +44,3 @@ echo "ansible_user = user@<DOMAIN_REALM>"
 echo "ansible_connection = winrm"
 echo "ansible_port = 5985"
 echo "ansible_winrm_transport = kerberos"
-EOF
