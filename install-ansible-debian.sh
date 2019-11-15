@@ -6,6 +6,7 @@ apt install ansible python3-pip python-dev libkrb5-dev krb5-user
 pip3 install pywinrm[kerberos]
 pip3 install pykerberos --upgrade
 pip3 install requests-kerberos --upgrade
+pip3 install requests --upgrade
 
 cat << EOF
 
