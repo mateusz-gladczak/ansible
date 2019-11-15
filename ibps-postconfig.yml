@@ -1,0 +1,51 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Disable firewall
+      win_firewall:
+          state: disabled
+          profiles:
+            - Domain
+            - Private
+            - Public
+    - name: Set backup static route
+      win_route:
+        destination: 67.204.119.0/25
+        gateway: 10.156.20.1
+        state: present
+    - name: Fix the networker client
+      win_command: rename "C:\Program Files\EMC NetWorker\nsr\res" res.old
+    - name: Start networker nsrexecd service
+      win_service:
+        name: nsrexecd
+        start_mode: auto
+        state: started
+    - name: Start networker nsrnmmra service
+      win_service:
+        name: nsrnmmra
+        start_mode: auto
+        state: started
+    - name: Add domain groups to local admins
+      win_group_membership:
+        name: Administrators
+        members:
+          - IBPS-HOSTING\AppAdmin
+          - IBPS-HOSTING\SVC-Nessus1
+    - name: Configure SWAP
+      win_pagefile:
+        drive: C
+        initial_size: 8208
+        maximum_size: 8208
+        override: yes
+        state: present
+    - name: Copy BigFix
+      win_copy:
+        src: /files/BigFix/Manassas
+        dst: C:\Temp\
+    - name: Remove BigFix installation
+      win_command: C:\Temp\Manassas\BESRemove9.5.8.38.exe /silent /all
+#https://www.ibm.com/support/knowledgecenter/en/SSQL82_9.5.0/com.ibm.bigfix.doc/Platform/Installation/c_using_login_scripts.html
+    - name: Install BigFix
+      win_command: BigFix-BES-Client-9.5.8.38.exe /s /v/l*voicewarmup \"C:\besclientinstall.log\" SETUPEXE=1 /qn”
+    - name: Reboot server
+      win_reboot:
