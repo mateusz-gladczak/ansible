@@ -1,11 +1,13 @@
+#!/bin/bash
 #run this file with the command:
 #https://raw.githubusercontent.com/mateusz-gladczak/ansible/master/install-ansible-debian.sh | /bin/sh -
 
-#!/bin/bash
 apt install ansible python3-pip python-dev libkrb5-dev krb5-user
 pip3 install pywinrm[kerberos]
 pip3 install pykerberos --upgrade
 pip3 install requests-kerberos --upgrade
+echo ""
+echo ""
 echo "-----------------------------------------------------"
 echo "configure /etc/krb5.conf for kerberos authentication"
 echo "-----------------------------------------------------"
@@ -42,3 +44,4 @@ echo "ansible_user = user@<DOMAIN_REALM>"
 echo "ansible_connection = winrm"
 echo "ansible_port = 5985"
 echo "ansible_winrm_transport = kerberos"
+EOF
