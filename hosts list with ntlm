@@ -1,0 +1,10 @@
+[windows]
+test.nwtraders.msft
+10.0.10.49
+
+[windows:vars]
+ansible_user = administrator@NWTRADERS.MSFT
+ansible_connection = winrm
+ansible_port = 5985
+ansible_winrm_transport = kerberos
+#ansible_winrm_transport = ntlm
