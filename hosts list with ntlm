@@ -6,5 +6,6 @@ test.nwtraders.msft
 ansible_user = administrator@NWTRADERS.MSFT
 ansible_connection = winrm
 ansible_port = 5985
-ansible_winrm_transport = kerberos
-#ansible_winrm_transport = ntlm
+ansible_winrm_transport = ntlm
+
+#play with -k for password prompt
