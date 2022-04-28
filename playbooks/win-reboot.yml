@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+  - name: Reboot
+    win_reboot:

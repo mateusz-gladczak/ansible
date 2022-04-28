@@ -1,0 +1,73 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Disable firewall
+      win_firewall:
+          state: disabled
+          profiles:
+            - Domain
+            - Private
+            - Public
+    - name: Set static route for AV Server
+      win_route:
+        destination: 67.204.119.0/25
+        gateway: 10.156.20.1
+        state: present
+
+    - name: Set static route for backup server
+      win_route:
+        destination: 67.204.122.160/27
+        gateway: 10.156.20.1
+        state: present
+
+    - name: Set static route for data domain
+      win_route:
+        destination: 100.64.17.192/26
+        state: present
+        
+    - name: Fix the networker client
+      win_command: cmd /c rename "C:\Program Files\EMC NetWorker\nsr\res" res.old
+      ignore_errors: yes
+      
+    - name: Start networker nsrexecd service
+      win_service:
+        name: nsrexecd
+        start_mode: auto
+        state: started
+      ignore_errors: yes
+      
+    - name: Start networker nsrnmmra service
+      win_service:
+        name: nsrnmmra
+        start_mode: auto
+        state: started
+      ignore_errors: yes
+      
+    - name: Add domain groups to local admins
+      win_group_membership:
+        name: Administrators
+        members:
+          - IBPS-HOSTING\AppAdmin
+          - IBPS-HOSTING\SVC-Nessus1
+          
+    - name: Configure SWAP
+      win_pagefile:
+        drive: C
+        initial_size: 8208
+        maximum_size: 8208
+        override: yes
+        state: present
+        
+    - name: Copy BigFix
+      win_copy:
+        src: /home/a-mgladcza/BigFix/Manassas
+        dest: C:\Temp\
+        
+    - name: Remove BigFix installation
+      win_shell: C:\Temp\Manassas\BESRemove9.5.8.38.exe /silent /all
+      
+    - name: Install BigFix
+      win_shell: C:\Temp\Manassas\BigFix-BES-Client-9.5.8.38.exe /S /v /qn
+      
+    - name: Reboot server
+      win_reboot:

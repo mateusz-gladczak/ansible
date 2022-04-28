@@ -1,0 +1,30 @@
+- hosts: all
+  gather_facts: no
+  vars:
+    win_host_names: []
+    
+  tasks:
+  - debug:
+      msg: Processing {{ inventory_hostname }}
+      
+  - name: Define pinghosts if not defined
+    set_fact:
+      pinghosts: ['fakehostentry']
+    when: pinghosts is not defined
+  
+  - name: PING host
+    win_ping:
+    register: res
+    ignore_errors: true
+    when: "'{{ inventory_hostname }}' not in pinghosts"
+    
+  - name: prepare list succeeded
+    set_fact:  
+      win_host_names: "{{ win_host_names }} + [ '{{inventory_hostname}}' ]"
+    when: res is succeeded
+
+  - name: set stats 
+    set_stats:  
+        data:  
+          pinghosts: "{{ win_host_names }}"  
+        per_host: no

@@ -1,0 +1,20 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: modify VM Attributes
+      vmware_guest:
+        hostname: 10.0.10.200
+        username: ansible_worker
+        password: aingoh0iexahQuooh1vaen8vaFoo8wao
+        datacenter: ha-datacenter
+        name: dupa
+        validate_certs: no
+        state: present
+        customvalues:
+          - key: guestinfo.test1
+            value: ABC
+          - key: guestinfo.test2
+            value: DEF
+          - key: FOO
+            value: bar
+      delegate_to: localhost

@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: modify VM Attributes
+      vmware_guest_custom_attributes:
+        datacenter: ha-datacenter
+        name: dupa
+        validate_certs: no
+        state: present
+        attributes:
+          - name: guestinfo.test1
+            value: ABC
+          - name: guestinfo.test2
+            value: DEF
+      delegate_to: localhost
